@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useWeb3 } from "@components/provider";
 import { Button } from "@components/ui/common";
-import { useAccount } from "@components/hooks/web3/useAccount";
+import { useAccount } from "@components/hooks/web3";
 import { useRouter } from "next/router";
 
 export default function Navbar() {
-  const { connect, isWeb3Loaded, isLoading } = useWeb3();
+  const { connect, web3, requireInstall, isLoading } = useWeb3();
   const { account } = useAccount();
   const { pathname } = useRouter();
   return (
@@ -45,19 +45,17 @@ export default function Navbar() {
                   >
                     Loading...
                   </Button>
-                ) : isWeb3Loaded ? (
-                  account.data ? (
-                    <Button className="text-white bg-yellow-600 cursor-default hover:bg-yellow-700 ">
-                      Hi {account.isAdmin ? "Admin" : "there"}
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={connect}
-                      className="text-white bg-indigo-600 hover:bg-indigo-700 "
-                    >
-                      Connect
-                    </Button>
-                  )
+                ) : account.data ? (
+                  <Button className="text-white bg-yellow-600 cursor-default hover:bg-yellow-700 ">
+                    Hi {account.isAdmin ? "Admin" : "there"}
+                  </Button>
+                ) : requireInstall ? (
+                  <Button
+                    onClick={connect}
+                    className="text-white bg-indigo-600 hover:bg-indigo-700 "
+                  >
+                    Connect
+                  </Button>
                 ) : (
                   <Button
                     onClick={() =>

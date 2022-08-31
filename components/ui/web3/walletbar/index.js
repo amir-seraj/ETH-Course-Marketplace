@@ -1,4 +1,7 @@
+import { useWeb3 } from "@components/provider";
+
 export default function WalletBar({ address, network }) {
+  const { requireInstall } = useWeb3();
   return (
     <section className="text-white bg-indigo-600">
       <div className="p-8">
@@ -18,13 +21,19 @@ export default function WalletBar({ address, network }) {
             </div>
           </div>
           <div>
-            {!network.isSupported && (
-              <div className="bg-red-400 p-4 rounded-lg ">
+            {!network.hasInitialRes && !network.isSupported && (
+              <div className="p-4 bg-red-400 rounded-lg ">
                 <div>Connected to wrong Network</div>
                 <div>
                   Connect to :{" "}
                   <strong className="text-xl">{network.target}</strong>
                 </div>
+              </div>
+            )}
+            {requireInstall && (
+              <div className="p-4 text-black bg-yellow-500 rounded-lg">
+                Cannot connect to network! <br />
+                Please install Metamask
               </div>
             )}
             {network.data && (
