@@ -1,12 +1,15 @@
-import courses from "./index.json";
+
+
+import courses from "./index.json"
 
 export const getAllCourses = () => {
+
   return {
     data: courses,
-    courseMap: courses.reduce((acc, crs, ind) => {
-      acc[crs.id] = crs;
-      acc[crs.id].index = ind;
-      return acc;
-    }, {}),
-  };
-};
+    courseMap: courses.reduce((a, c, i) => {
+      a[c.id] = c
+      a[c.id].index = i
+      return a
+    }, {})
+  }
+}

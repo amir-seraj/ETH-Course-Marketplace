@@ -1,15 +1,16 @@
-import { BaseLayout } from "@components/ui/layout";
-import { Web3Provider } from "@components/provider";
-import "../styles/globals.css";
+import '@styles/globals.css'
+
+const Noop = ({children}) => <>{children}</>
 
 function MyApp({ Component, pageProps }) {
+
+  const Layout = Component.Layout ?? Noop
+
   return (
-    <Web3Provider>
-      <BaseLayout>
-        <Component {...pageProps} />
-      </BaseLayout>
-    </Web3Provider>
-  );
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }
 
-export default MyApp;
+export default MyApp
