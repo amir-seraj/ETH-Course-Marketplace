@@ -47,5 +47,8 @@
     "/C:/Users/Mummy/Pictures/Wallpaper/yugioh-yugi-on-fire-8a2a9p7gcudgea9f.jpg"
   ],
   "superBG.activeImage": 0,
-  "superBG.url": ""
+  "superBG.url": "",
+  "solidity.compileUsingRemoteVersion": "v0.8.17+commit.8df45f5f",
+  "solidity.compileUsingLocalVersion": "c:\\Users\\Mummy\\Documents\\Git\\ETH-Course-Marketplace\\soljson-v0.8.17+commit.8df45f5f.js",
+  "solidity.defaultCompiler": "remote"
 }
