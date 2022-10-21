@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
+
 contract CourseMarketplace {
   enum State {
     Purchased,
@@ -19,25 +20,22 @@ contract CourseMarketplace {
   mapping(uint => bytes32) private ownedCourseHash;
   // number of all courses + id of the course
   uint private totalOwnedCourses;
-
-  address  private payable owner;
-
+  address payable private owner;
   constructor() {
     setContractOwner(msg.sender);
   }
+  /// Course has already a Owner!
+  error CourseHasOwner();
 
-// Only owner has access!
+  /// Only owner has an access!
   error OnlyOwner();
 
-  modifier onlyOwner(){
-    if(msg.sender != getContractOwner()){
+  modifier onlyOwner() {
+    if (msg.sender != getContractOwner()) {
       revert OnlyOwner();
     }
     _;
   }
-
-  /// Course has already a Owner!
-  error CourseHasOwner();
 
   function purchaseCourse(
     bytes16 courseId, // 0x00000000000000000000000000003130
@@ -61,11 +59,11 @@ contract CourseMarketplace {
     });
   }
 
-  function transferOwnership(address newOwner) 
-  external
-  onlyOwner
+  function transferOwnership(address newOwner)
+    external
+    onlyOwner
   {
-    setContractOwner;
+    setContractOwner(newOwner);
   }
 
   function getCourseCount()
@@ -90,18 +88,17 @@ contract CourseMarketplace {
     return ownedCourses[courseHash];
   }
 
-  function getContractOwner( ) 
-    public 
-    view 
-    returns(address)
+  function getContractOwner()
+    public
+    view
+    returns (address)
   {
-  return owner;   
+    return owner;
   }
 
   function setContractOwner(address newOwner) private {
     owner = payable(newOwner);
   }
-
   function hasCourseOwnership(bytes32 courseHash)
     private
     view
