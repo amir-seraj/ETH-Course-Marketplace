@@ -32,7 +32,8 @@
       "name": "purchaseCourse",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -58,7 +59,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -77,7 +79,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -123,7 +126,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -136,7 +140,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"CourseHasOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnlyOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"getContractOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"courseHash\",\"type\":\"bytes32\"}],\"name\":\"getCourseByHash\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"proof\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"enum CourseMarketplace.State\",\"name\":\"state\",\"type\":\"uint8\"}],\"internalType\":\"struct CourseMarketplace.Course\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCourseCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getCourseHashAtIndex\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes16\",\"name\":\"courseId\",\"type\":\"bytes16\"},{\"internalType\":\"bytes32\",\"name\":\"proof\",\"type\":\"bytes32\"}],\"name\":\"purchaseCourse\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"errors\":{\"CourseHasOwner()\":[{\"notice\":\"Course has already a Owner!\"}],\"OnlyOwner()\":[{\"notice\":\"Only owner has an access!\"}]},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/CourseMarketplace.sol\":\"CourseMarketplace\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/CourseMarketplace.sol\":{\"keccak256\":\"0xab6d248c7dfce5d395c32c69ab50b2d9997f2b3ef9fef0fda40633ddcbad8103\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6d148fac480ddc8b50fd0e011f07c04ed6a8129ca44b9c426d2fb0e95b7aa77e\",\"dweb:/ipfs/QmahfjrpcgjyvpqkHtqqGqGf85zrCnEjwWkZ8rkYLLhfE3\"]}},\"version\":1}",
@@ -4486,13 +4491,11 @@
   "sourceMap": "65:2253:0:-:0;;;593:53;;;;;;;;;;613:28;630:10;613:16;;;:28;;:::i;:::-;65:2253;;2073:88;2147:8;2131:5;;:25;;;;;;;;;;;;;;;;;;2073:88;:::o;65:2253::-;;;;;;;",
   "deployedSourceMap": "65:2253:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1974:95;;;;;;;;;;;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;1831:139;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;1700:128;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;1593:104;;;;;;;;;;;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;877:597;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;1478:111;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;1974:95;2035:7;2059:5;;;;;;;;;;;2052:12;;1974:95;:::o;1831:139::-;1911:13;;:::i;:::-;1941:12;:24;1954:10;1941:24;;;;;;;;;;;1934:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;:::i;:::-;;;;;;;;1831:139;;;:::o;1700:128::-;1777:7;1801:15;:22;1817:5;1801:22;;;;;;;;;;;;1794:29;;1700:128;;;:::o;1593:104::-;1654:4;1675:17;;1668:24;;1593:104;:::o;877:597::-;1087:18;1135:8;1145:10;1118:38;;;;;;;;;:::i;:::-;;;;;;;;;;;;;1108:49;;;;;;1087:70;;1167:30;1186:10;1167:18;:30::i;:::-;1163:74;;;1214:16;;;;;;;;;;;;;;1163:74;1242:7;1252:17;;:19;;;;;;;;;:::i;:::-;;;;;1242:29;;1299:10;1277:15;:19;1293:2;1277:19;;;;;;;;;;;:32;;;;1342:127;;;;;;;;1361:2;1342:127;;;;1378:9;1342:127;;;;1402:5;1342:127;;;;1422:10;1342:127;;;;;;1447:15;1342:127;;;;;;;;:::i;:::-;;;;;1315:12;:24;1328:10;1315:24;;;;;;;;;;;:154;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;1081:393;;877:597;;:::o;1478:111::-;809:18;:16;:18::i;:::-;795:32;;:10;:32;;;791:71;;844:11;;;;;;;;;;;;;;791:71;1558:26:::1;1575:8;1558:16;:26::i;:::-;1478:111:::0;:::o;2164:152::-;2246:4;2301:10;2267:44;;:12;:24;2280:10;2267:24;;;;;;;;;;;:30;;;;;;;;;;;;:44;;;2260:51;;2164:152;;;:::o;2073:88::-;2147:8;2131:5;;:25;;;;;;;;;;;;;;;;;;2073:88;:::o;-1:-1:-1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;:::o;7:126:1:-;44:7;84:42;77:5;73:54;62:65;;7:126;;;:::o;139:96::-;176:7;205:24;223:5;205:24;:::i;:::-;194:35;;139:96;;;:::o;241:118::-;328:24;346:5;328:24;:::i;:::-;323:3;316:37;241:118;;:::o;365:222::-;458:4;496:2;485:9;481:18;473:26;;509:71;577:1;566:9;562:17;553:6;509:71;:::i;:::-;365:222;;;;:::o;674:117::-;783:1;780;773:12;920:77;957:7;986:5;975:16;;920:77;;;:::o;1003:122::-;1076:24;1094:5;1076:24;:::i;:::-;1069:5;1066:35;1056:63;;1115:1;1112;1105:12;1056:63;1003:122;:::o;1131:139::-;1177:5;1215:6;1202:20;1193:29;;1231:33;1258:5;1231:33;:::i;:::-;1131:139;;;;:::o;1276:329::-;1335:6;1384:2;1372:9;1363:7;1359:23;1355:32;1352:119;;;1390:79;;:::i;:::-;1352:119;1510:1;1535:53;1580:7;1571:6;1560:9;1556:22;1535:53;:::i;:::-;1525:63;;1481:117;1276:329;;;;:::o;1611:77::-;1648:7;1677:5;1666:16;;1611:77;;;:::o;1694:108::-;1771:24;1789:5;1771:24;:::i;:::-;1766:3;1759:37;1694:108;;:::o;1808:::-;1885:24;1903:5;1885:24;:::i;:::-;1880:3;1873:37;1808:108;;:::o;1922:::-;1999:24;2017:5;1999:24;:::i;:::-;1994:3;1987:37;1922:108;;:::o;2036:180::-;2084:77;2081:1;2074:88;2181:4;2178:1;2171:15;2205:4;2202:1;2195:15;2222:112;2302:1;2295:5;2292:12;2282:46;;2308:18;;:::i;:::-;2282:46;2222:112;:::o;2340:125::-;2384:7;2413:5;2402:16;;2419:40;2453:5;2419:40;:::i;:::-;2340:125;;;:::o;2471:::-;2526:9;2559:31;2584:5;2559:31;:::i;:::-;2546:44;;2471:125;;;:::o;2602:131::-;2684:42;2720:5;2684:42;:::i;:::-;2679:3;2672:55;2602:131;;:::o;2813:1030::-;2954:4;2949:3;2945:14;3039:4;3032:5;3028:16;3022:23;3058:63;3115:4;3110:3;3106:14;3092:12;3058:63;:::i;:::-;2969:162;3214:4;3207:5;3203:16;3197:23;3233:63;3290:4;3285:3;3281:14;3267:12;3233:63;:::i;:::-;3141:165;3389:4;3382:5;3378:16;3372:23;3408:63;3465:4;3460:3;3456:14;3442:12;3408:63;:::i;:::-;3316:165;3564:4;3557:5;3553:16;3547:23;3583:63;3640:4;3635:3;3631:14;3617:12;3583:63;:::i;:::-;3491:165;3739:4;3732:5;3728:16;3722:23;3758:68;3820:4;3815:3;3811:14;3797:12;3758:68;:::i;:::-;3666:170;2923:920;2813:1030;;:::o;3849:311::-;3986:4;4024:3;4013:9;4009:19;4001:27;;4038:115;4150:1;4139:9;4135:17;4126:6;4038:115;:::i;:::-;3849:311;;;;:::o;4166:122::-;4239:24;4257:5;4239:24;:::i;:::-;4232:5;4229:35;4219:63;;4278:1;4275;4268:12;4219:63;4166:122;:::o;4294:139::-;4340:5;4378:6;4365:20;4356:29;;4394:33;4421:5;4394:33;:::i;:::-;4294:139;;;;:::o;4439:329::-;4498:6;4547:2;4535:9;4526:7;4522:23;4518:32;4515:119;;;4553:79;;:::i;:::-;4515:119;4673:1;4698:53;4743:7;4734:6;4723:9;4719:22;4698:53;:::i;:::-;4688:63;;4644:117;4439:329;;;;:::o;4774:118::-;4861:24;4879:5;4861:24;:::i;:::-;4856:3;4849:37;4774:118;;:::o;4898:222::-;4991:4;5029:2;5018:9;5014:18;5006:26;;5042:71;5110:1;5099:9;5095:17;5086:6;5042:71;:::i;:::-;4898:222;;;;:::o;5126:118::-;5213:24;5231:5;5213:24;:::i;:::-;5208:3;5201:37;5126:118;;:::o;5250:222::-;5343:4;5381:2;5370:9;5366:18;5358:26;;5394:71;5462:1;5451:9;5447:17;5438:6;5394:71;:::i;:::-;5250:222;;;;:::o;5478:150::-;5515:7;5555:66;5548:5;5544:78;5533:89;;5478:150;;;:::o;5634:122::-;5707:24;5725:5;5707:24;:::i;:::-;5700:5;5697:35;5687:63;;5746:1;5743;5736:12;5687:63;5634:122;:::o;5762:139::-;5808:5;5846:6;5833:20;5824:29;;5862:33;5889:5;5862:33;:::i;:::-;5762:139;;;;:::o;5907:474::-;5975:6;5983;6032:2;6020:9;6011:7;6007:23;6003:32;6000:119;;;6038:79;;:::i;:::-;6000:119;6158:1;6183:53;6228:7;6219:6;6208:9;6204:22;6183:53;:::i;:::-;6173:63;;6129:117;6285:2;6311:53;6356:7;6347:6;6336:9;6332:22;6311:53;:::i;:::-;6301:63;;6256:118;5907:474;;;;;:::o;6387:122::-;6460:24;6478:5;6460:24;:::i;:::-;6453:5;6450:35;6440:63;;6499:1;6496;6489:12;6440:63;6387:122;:::o;6515:139::-;6561:5;6599:6;6586:20;6577:29;;6615:33;6642:5;6615:33;:::i;:::-;6515:139;;;;:::o;6660:329::-;6719:6;6768:2;6756:9;6747:7;6743:23;6739:32;6736:119;;;6774:79;;:::i;:::-;6736:119;6894:1;6919:53;6964:7;6955:6;6944:9;6940:22;6919:53;:::i;:::-;6909:63;;6865:117;6660:329;;;;:::o;6995:79::-;7034:7;7063:5;7052:16;;6995:79;;;:::o;7080:157::-;7185:45;7205:24;7223:5;7205:24;:::i;:::-;7185:45;:::i;:::-;7180:3;7173:58;7080:157;;:::o;7243:94::-;7276:8;7324:5;7320:2;7316:14;7295:35;;7243:94;;;:::o;7343:::-;7382:7;7411:20;7425:5;7411:20;:::i;:::-;7400:31;;7343:94;;;:::o;7443:100::-;7482:7;7511:26;7531:5;7511:26;:::i;:::-;7500:37;;7443:100;;;:::o;7549:157::-;7654:45;7674:24;7692:5;7674:24;:::i;:::-;7654:45;:::i;:::-;7649:3;7642:58;7549:157;;:::o;7712:397::-;7852:3;7867:75;7938:3;7929:6;7867:75;:::i;:::-;7967:2;7962:3;7958:12;7951:19;;7980:75;8051:3;8042:6;7980:75;:::i;:::-;8080:2;8075:3;8071:12;8064:19;;8100:3;8093:10;;7712:397;;;;;:::o;8115:180::-;8163:77;8160:1;8153:88;8260:4;8257:1;8250:15;8284:4;8281:1;8274:15;8301:233;8340:3;8363:24;8381:5;8363:24;:::i;:::-;8354:33;;8409:66;8402:5;8399:77;8396:103;;8479:18;;:::i;:::-;8396:103;8526:1;8519:5;8515:13;8508:20;;8301:233;;;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\n\ncontract CourseMarketplace {\n  enum State {\n    Purchased,\n    Activated,\n    Deactivated\n  }\n  struct Course {\n    uint id; // 32\n    uint price; // 32\n    bytes32 proof; // 32\n    address owner; // 20\n    State state; // 1\n  }\n  // mapping of courseHash to Course data\n  mapping(bytes32 => Course) private ownedCourses;\n  // mapping of courseID to courseHash\n  mapping(uint => bytes32) private ownedCourseHash;\n  // number of all courses + id of the course\n  uint private totalOwnedCourses;\n  address payable private owner;\n  constructor() {\n    setContractOwner(msg.sender);\n  }\n  /// Course has already a Owner!\n  error CourseHasOwner();\n\n  /// Only owner has an access!\n  error OnlyOwner();\n\n  modifier onlyOwner() {\n    if (msg.sender != getContractOwner()) {\n      revert OnlyOwner();\n    }\n    _;\n  }\n\n  function purchaseCourse(\n    bytes16 courseId, // 0x00000000000000000000000000003130\n    bytes32 proof // 0x0000000000000000000000000000313000000000000000000000000000003130\n  )\n    external\n    payable\n  {\n    bytes32 courseHash = keccak256(abi.encodePacked(courseId, msg.sender));\n    if (hasCourseOwnership(courseHash)) {\n      revert CourseHasOwner();\n    }\n    uint id = totalOwnedCourses++;\n    ownedCourseHash[id] = courseHash;\n    ownedCourses[courseHash] = Course({\n      id: id,\n      price: msg.value,\n      proof: proof,\n      owner: msg.sender,\n      state: State.Purchased\n    });\n  }\n\n  function transferOwnership(address newOwner)\n    external\n    onlyOwner\n  {\n    setContractOwner(newOwner);\n  }\n\n  function getCourseCount()\n    external\n    view\n    returns (uint)\n  {\n    return totalOwnedCourses;\n  }\n  function getCourseHashAtIndex(uint index)\n    external\n    view\n    returns (bytes32)\n  {\n    return ownedCourseHash[index];\n  }\n  function getCourseByHash(bytes32 courseHash)\n    external\n    view\n    returns (Course memory)\n  {\n    return ownedCourses[courseHash];\n  }\n\n  function getContractOwner()\n    public\n    view\n    returns (address)\n  {\n    return owner;\n  }\n\n  function setContractOwner(address newOwner) private {\n    owner = payable(newOwner);\n  }\n  function hasCourseOwnership(bytes32 courseHash)\n    private\n    view\n    returns (bool)\n  {\n    return ownedCourses[courseHash].owner == msg.sender;\n  }\n}",
-  "sourcePath": "/home/mummy/Projects/Github/ETH-Course-Marketplace/contracts/CourseMarketplace.sol",
+  "sourcePath": "/home/mummy/Projects/ETH-Course-Marketplace/contracts/CourseMarketplace.sol",
   "ast": {
     "absolutePath": "project:/contracts/CourseMarketplace.sol",
     "exportedSymbols": {
-      "CourseMarketplace": [
-        195
-      ]
+      "CourseMarketplace": [195]
     },
     "id": 196,
     "license": "MIT",
@@ -4500,15 +4503,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.8",
-          ".0",
-          "<",
-          "0.9",
-          ".0"
-        ],
+        "literals": ["solidity", ">=", "0.8", ".0", "<", "0.9", ".0"],
         "nodeType": "PragmaDirective",
         "src": "32:31:0"
       },
@@ -4520,9 +4515,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 195,
-        "linearizedBaseContracts": [
-          195
-        ],
+        "linearizedBaseContracts": [195],
         "name": "CourseMarketplace",
         "nameLocation": "74:17:0",
         "nodeType": "ContractDefinition",
@@ -4692,9 +4685,7 @@
                   "pathNode": {
                     "id": 14,
                     "name": "State",
-                    "nameLocations": [
-                      "272:5:0"
-                    ],
+                    "nameLocations": ["272:5:0"],
                     "nodeType": "IdentifierPath",
                     "referencedDeclaration": 5,
                     "src": "272:5:0"
@@ -4755,9 +4746,7 @@
                 "pathNode": {
                   "id": 19,
                   "name": "Course",
-                  "nameLocations": [
-                    "357:6:0"
-                  ],
+                  "nameLocations": ["357:6:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 17,
                   "src": "357:6:0"
@@ -5173,9 +5162,7 @@
               "src": "1081:393:0",
               "statements": [
                 {
-                  "assignments": [
-                    67
-                  ],
+                  "assignments": [67],
                   "declarations": [
                     {
                       "constant": false,
@@ -5439,9 +5426,7 @@
                   }
                 },
                 {
-                  "assignments": [
-                    86
-                  ],
+                  "assignments": [86],
                   "declarations": [
                     {
                       "constant": false,
@@ -5772,13 +5757,7 @@
                         "1415:5:0",
                         "1440:5:0"
                       ],
-                      "names": [
-                        "id",
-                        "price",
-                        "proof",
-                        "owner",
-                        "state"
-                      ],
+                      "names": ["id", "price", "proof", "owner", "state"],
                       "nodeType": "FunctionCall",
                       "src": "1342:127:0",
                       "tryCall": false,
@@ -5953,9 +5932,7 @@
                 "modifierName": {
                   "id": 116,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1540:9:0"
-                  ],
+                  "nameLocations": ["1540:9:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 59,
                   "src": "1540:9:0"
@@ -6345,9 +6322,7 @@
                     "pathNode": {
                       "id": 148,
                       "name": "Course",
-                      "nameLocations": [
-                        "1911:6:0"
-                      ],
+                      "nameLocations": ["1911:6:0"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 17,
                       "src": "1911:6:0"
@@ -6798,10 +6773,7 @@
         ],
         "scope": 196,
         "src": "65:2253:0",
-        "usedErrors": [
-          42,
-          45
-        ]
+        "usedErrors": [42, 45]
       }
     ],
     "src": "32:2286:0"
@@ -6810,9 +6782,17 @@
     "name": "solc",
     "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xF077217337E06e6D68F3E62B3d78Ebd0d8f2710D",
+      "transactionHash": "0x98df64a7055587a2e02e1015859515d9d9094e97cc385faeb53a0cc6a2a0db81"
+    }
+  },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-10-21T14:34:14.401Z",
+  "updatedAt": "2022-10-28T20:03:34.333Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
