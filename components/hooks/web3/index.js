@@ -30,3 +30,9 @@ export const useWallet = () => {
     canPurchaseCourse: !!(account.data && network.isSupported),
   };
 };
+export const useOwnedCourses = ({ ...args }) => {
+  const swrRes = enhanceHook(useHooks((hooks) => hooks.useOwnedCourses)(args));
+  return {
+    ownedCourses: swrRes,
+  };
+};
