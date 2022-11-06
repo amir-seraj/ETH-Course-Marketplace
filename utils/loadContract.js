@@ -1,7 +1,7 @@
 const NETWORK_ID = process.env.NEXT_PUBLIC_NETWORK_ID;
 
 export const loadContract = async (name, web3) => {
-  const res = await fetch(`/contracts/CourseMarketplace.json`);
+  const res = await fetch(`/contracts/${name}.json`);
   const Artifact = await res.json();
   let contract = null;
 
@@ -10,7 +10,6 @@ export const loadContract = async (name, web3) => {
       Artifact.abi,
       Artifact.networks[NETWORK_ID].address
     );
-    console.log(contract);
   } catch {
     console.log(`Contract ${name} cannot be loaded!`);
   }

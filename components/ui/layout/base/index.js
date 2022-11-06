@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 import { Web3Provider } from "@components/providers";
 import { Navbar, Footer } from "@components/ui/common";
 

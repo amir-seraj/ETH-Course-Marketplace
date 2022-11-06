@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Card({ course, Footer, disabled }) {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div className="overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
       <div className="flex h-full">
         <div className="flex-1 h-full next-image-wrapper">
           <Image
@@ -16,15 +16,15 @@ export default function Card({ course, Footer, disabled }) {
           />
         </div>
         <div className="p-8 pb-4 flex-2">
-          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+          <div className="text-sm font-semibold tracking-wide text-indigo-500 uppercase">
             {course.type}
           </div>
           <Link href={`/courses/${course.slug}`}>
-            <a className="h-12 block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+            <a className="block h-12 mt-1 text-sm font-medium leading-tight text-black sm:text-lg hover:underline">
               {course.title}
             </a>
           </Link>
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-sm text-gray-500 sm:text-base">
             {course.description.substring(0, 70)}...
           </p>
           {Footer && <Footer />}

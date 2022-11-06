@@ -4,14 +4,14 @@ import { getAllCourses } from "@content/courses/fetcher";
 import { Button } from "@components/ui/common";
 import { OrderModal } from "@components/ui/order";
 import { useState } from "react";
-import { useWallet } from "@components/hooks/web3";
+import { useWalletInfo } from "@components/hooks/web3";
 import { MarketHeader } from "@components/ui/marketplace";
 import { useWeb3 } from "@components/providers";
 
 export default function Marketplace({ courses }) {
   const { web3, contract } = useWeb3();
+  const { canPurchaseCourse, account } = useWalletInfo();
   const [selectedCourse, setSelectedCourse] = useState(null);
-  const { canPurchaseCourse, account } = useWallet();
 
   const purchaseCourse = async (order) => {
     const hexCourseId = web3.utils.utf8ToHex(selectedCourse.id);
@@ -48,6 +48,7 @@ export default function Marketplace({ courses }) {
     );
 
     console.log(proof);
+
     const value = web3.utils.toWei(String(order.price));
 
     try {
