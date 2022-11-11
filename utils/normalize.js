@@ -1,4 +1,4 @@
-export const COURSE_STATE = {
+export const COURSE_STATES = {
   0: "purchased",
   1: "activated",
   2: "deactivated",
@@ -11,6 +11,6 @@ export const normalizeOwnedCourse = (web3) => (course, ownedCourse) => {
     proof: ownedCourse.proof,
     owned: ownedCourse.owner,
     price: web3.utils.fromWei(ownedCourse.price),
-    state: COURSE_STATE(ownedCourse.state),
+    state: COURSE_STATES[ownedCourse.state],
   };
 };

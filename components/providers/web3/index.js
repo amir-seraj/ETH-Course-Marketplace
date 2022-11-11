@@ -38,10 +38,15 @@ export default function Web3Provider({ children }) {
       const provider = await detectEthereumProvider();
       if (provider) {
         const web3 = new Web3(provider);
-        const contract = loadContract("CourseMarketplace", web3);
-        console.log(contract);
+        const contract = await loadContract("CourseMarketplace", web3);
+
         setWeb3Api(
-          createWeb3State({ web3, provider, contract, isLoading: false })
+          createWeb3State({
+            web3,
+            provider,
+            contract,
+            isLoading: false,
+          })
         );
       } else {
         setWeb3Api((api) => ({ ...api, isLoading: false }));
@@ -51,7 +56,6 @@ export default function Web3Provider({ children }) {
 
     loadProvider();
   }, []);
-
   const _web3Api = useMemo(() => {
     const { web3, provider, isLoading } = web3Api;
     return {
@@ -71,16 +75,13 @@ export default function Web3Provider({ children }) {
             ),
     };
   }, [web3Api]);
-
   return (
     <Web3Context.Provider value={_web3Api}>{children}</Web3Context.Provider>
   );
 }
-
 export function useWeb3() {
   return useContext(Web3Context);
 }
-
 export function useHooks(cb) {
   const { hooks } = useWeb3();
   return cb(hooks);
