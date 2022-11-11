@@ -1,18 +1,18 @@
-import { EthRates, WalletBar } from "@components/ui/web3";
 import { Breadcrumbs } from "@components/ui/common";
+import { EthRates, WalletBar } from "@components/ui/web3";
 
 const LINKS = [
   {
     href: "/marketplace",
-    value: "BUY",
+    value: "Buy",
   },
   {
     href: "/marketplace/courses/owned",
-    value: "MY COURSES",
+    value: "My Courses",
   },
   {
-    href: "/marketplace/courses/manage",
-    value: "MANAGE COURSES",
+    href: "/marketplace/courses/managed",
+    value: "Manage Courses",
   },
 ];
 
@@ -20,9 +20,7 @@ export default function Header() {
   return (
     <>
       <div className="pt-4">
-        <div className="pt-4">
-          <WalletBar />
-        </div>
+        <WalletBar />
       </div>
       <EthRates />
       <div className="flex flex-row-reverse p-4 sm:px-6 lg:px-8">

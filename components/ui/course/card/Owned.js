@@ -20,6 +20,7 @@ export default function OwnedCourseCard({ children, course }) {
               width="45"
               height="45"
               layout="responsive"
+              alt="#"
             />
           </div>
         </div>
@@ -37,6 +38,7 @@ export default function OwnedCourseCard({ children, course }) {
               {course.price} ETH
             </p>
           </div>
+
           <div className="border-t border-gray-200">
             <dl>
               <div className="px-4 py-5 bg-gray-50 sm:px-6">
@@ -45,7 +47,7 @@ export default function OwnedCourseCard({ children, course }) {
                   {course.ownedCourseId}
                 </dd>
               </div>
-              <div className="px-4 py-5 bg-white sm:grid sm:grid-cols-9 sm:gap-4 sm:px-6">
+              <div className="px-4 py-5 bg-white sm:px-6">
                 <dt className="text-sm font-medium text-gray-500">Proof</dt>
                 <dd className="mt-1 text-sm text-gray-900 break-words sm:mt-0 sm:col-span-2">
                   {course.proof}
