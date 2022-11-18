@@ -1,112 +1,145 @@
+
+
 import { useAdmin, useManagedCourses } from "@components/hooks/web3";
 import { useWeb3 } from "@components/providers";
 import { Button, Message } from "@components/ui/common";
-import {
-  CourseFilter,
-  ManagedCourseCard,
-  OwnedCourseCard,
-} from "@components/ui/course";
+import { CourseFilter, ManagedCourseCard } from "@components/ui/course";
 import { BaseLayout } from "@components/ui/layout";
 import { MarketHeader } from "@components/ui/marketplace";
 import { useState } from "react";
 
-const VerificationInput = ({ onVerify }) => {
-  const [email, setEmail] = useState("");
+// BEFORE TX BALANCE -> 85,233893735999999996
+
+// GAS 133009 * 20000000000 -> 2660180000000000 -> 0,00266018
+
+// GAS + VALUE SEND = 0,00266018 + 1 -> 1,00266018
+
+// AFTER TX -> 84,231233556
+// AFTER TX -> 84,231233556
+//             85,231233556
+
+const VerificationInput = ({onVerify}) => {
+  const [ email, setEmail ] = useState("")
 
   return (
-    <div className="relative flex mr-2 rounded-md">
+    <div className="flex mr-2 relative rounded-md">
       <input
+        value={email}
+        onChange={({target: {value}}) => setEmail(value)}
         type="text"
         name="account"
         id="account"
-        className="block p-4 border-gray-300 rounded-md shadow-md w-96 focus:ring-indigo-500 focus:border-indigo-500 pl-7 sm:text-sm"
-        placeholder="0x2341ab..."
-        value={email}
-        onChange={(e) => {
-          let value = e.target.value;
-          setEmail(value);
-        }}
-      />
+        className="w-96 focus:ring-indigo-500 shadow-md focus:border-indigo-500 block pl-7 p-4 sm:text-sm border-gray-300 rounded-md"
+        placeholder="0x2341ab..." />
       <Button
         onClick={() => {
-          onVerify(email);
+          onVerify(email)
         }}
       >
         Verify
       </Button>
     </div>
-  );
-};
+  )
+}
 
 export default function ManagedCourses() {
-  const [proofedOwnership, setProofedOwnership] = useState({});
-  const { account } = useAdmin({ redirectTo: "/marketplace" });
-  const { web3, contract } = useWeb3();
-  const { managedCourses } = useManagedCourses(account);
-  const verifyCourse = (email, { hash, proof }) => {
-    const emailHash = web3.utils.sha3(email);
+  const [ proofedOwnership, setProofedOwnership ] = useState({})
+  const { web3, contract } = useWeb3()
+  const { account } = useAdmin({redirectTo: "/marketplace"})
+  const { managedCourses } = useManagedCourses(account)
+
+  const verifyCourse = (email, {hash, proof}) => {
+    const emailHash = web3.utils.sha3(email)
     const proofToCheck = web3.utils.soliditySha3(
       { type: "bytes32", value: emailHash },
       { type: "bytes32", value: hash }
-    );
-    proofToCheck === proof
-      ? setProofedOwnership({ ...proofedOwnership, [hash]: true })
-      : setProofedOwnership({ ...proofedOwnership, [hash]: false });
-  };
+    )
 
-  const activateCourse = async (courseHash) => {
+    proofToCheck === proof ?
+      setProofedOwnership({
+        ...proofedOwnership,
+        [hash]: true
+      }) :
+      setProofedOwnership({
+        ...proofedOwnership,
+        [hash]: false
+      })
+  }
+
+  const changeCourseState = async (courseHash, method) => {
     try {
-      await contract.methods
-        .activateCourse(courseHash)
-        .send({ from: account.data });
-    } catch (error) {
-      console.error(error.message);
+      await contract.methods[method](courseHash)
+        .send({
+          from: account.data
+        })
+    } catch(e) {
+      console.error(e.message)
     }
-  };
+  }
+
+  const activateCourse = async courseHash => {
+    changeCourseState(courseHash, "activateCourse")
+  }
+
+  const deactivateCourse = async courseHash => {
+    changeCourseState(courseHash, "deactivateCourse")
+  }
+
   if (!account.isAdmin) {
-    return null;
+    return null
   }
 
   return (
     <>
       <MarketHeader />
       <CourseFilter />
-      <section className="flex">
-        {managedCourses.data?.map((course) => (
-          <ManagedCourseCard key={course.ownedCourseId} course={course}>
+      <section className="grid grid-cols-1">
+        { managedCourses.data?.map(course =>
+          <ManagedCourseCard
+            key={course.ownedCourseId}
+            course={course}
+          >
             <VerificationInput
-              onVerify={(email) => {
-                verifyCourse(email, { hash: course.hash, proof: course.proof });
+              onVerify={email => {
+                verifyCourse(email, {
+                  hash: course.hash,
+                  proof: course.proof
+                })
               }}
-            ></VerificationInput>
-            {proofedOwnership[course.hash] && (
+            />
+            { proofedOwnership[course.hash] &&
               <div className="mt-2">
-                <Message>Verified!</Message>
+                <Message>
+                  Verified!
+                </Message>
               </div>
-            )}
-            {proofedOwnership[course.hash] === false && (
+            }
+            { proofedOwnership[course.hash] === false &&
               <div className="mt-2">
-                <Message type="danger">Wrong Proof!</Message>
+                <Message type="danger">
+                  Wrong Proof!
+                </Message>
               </div>
-            )}
-            {course.state === "purchased" && (
-              <div>
+            }
+            { course.state === "purchased" &&
+              <div className="mt-2">
                 <Button
-                  variant="green"
-                  onClick={() => {
-                    activateCourse(course.hash);
-                  }}
-                >
+                  onClick={() => activateCourse(course.hash)}
+                  variant="green">
                   Activate
                 </Button>
-                <Button variant="red">Deactivate</Button>
+                <Button
+                  onClick={() => deactivateCourse(course.hash)}
+                  variant="red">
+                  Deactivate
+                </Button>
               </div>
-            )}
+            }
           </ManagedCourseCard>
-        ))}
+        )}
       </section>
     </>
-  );
+  )
 }
 
-ManagedCourses.Layout = BaseLayout;
+ManagedCourses.Layout = BaseLayout
