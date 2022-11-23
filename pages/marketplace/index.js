@@ -1,7 +1,11 @@
 import { CourseCard, CourseList } from "@components/ui/course";
 import { BaseLayout } from "@components/ui/layout";
 import { getAllCourses } from "@content/courses/fetcher";
+<<<<<<< HEAD
 import { useWalletInfo, useOwnedCourses } from "@components/hooks/web3";
+=======
+import { useWalletInfo } from "@components/hooks/web3";
+>>>>>>> 532b7c5d92c30bcb38d856ddcc385d2c1d0eecb3
 import { Button, Loader } from "@components/ui/common";
 import { OrderModal } from "@components/ui/order";
 import { useState } from "react";
@@ -12,7 +16,10 @@ export default function Marketplace({ courses }) {
   const { web3, contract, requireInstall } = useWeb3();
   const { hasConnectedWallet, isConnecting, account } = useWalletInfo();
   const [selectedCourse, setSelectedCourse] = useState(null);
+<<<<<<< HEAD
   const { ownedCourses } = useOwnedCourses(courses, account.data);
+=======
+>>>>>>> 532b7c5d92c30bcb38d856ddcc385d2c1d0eecb3
 
   const purchaseCourse = async (order) => {
     const hexCourseId = web3.utils.utf8ToHex(selectedCourse.id);
@@ -63,6 +70,7 @@ export default function Marketplace({ courses }) {
                   </Button>
                 );
               }
+<<<<<<< HEAD
               if (!ownedCourses.hasInitialResponse) {
                 return <div style={{ height: "50px" }}></div>;
               }
@@ -76,6 +84,9 @@ export default function Marketplace({ courses }) {
                   </Button>
                 );
               }
+=======
+
+>>>>>>> 532b7c5d92c30bcb38d856ddcc385d2c1d0eecb3
               return (
                 <Button
                   onClick={() => setSelectedCourse(course)}
