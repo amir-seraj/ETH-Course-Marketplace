@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Card({ course, disabled, Footer }) {
+export default function Card({ course, disabled, Footer, state }) {
   return (
     <div className="overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
       <div className="flex h-full">
@@ -16,8 +16,27 @@ export default function Card({ course, disabled, Footer }) {
           />
         </div>
         <div className="p-8 pb-4 flex-2">
-          <div className="text-sm font-semibold tracking-wide text-indigo-500 uppercase">
-            {course.type}
+          <div className="flex items-center">
+            <div className="mr-2 text-sm font-semibold tracking-wide text-indigo-500 uppercase">
+              {course.type}
+            </div>
+            <div>
+              {state === "activated" && (
+                <div className="p-1 px-3 text-xs text-black bg-green-200 rounded-full">
+                  Activated
+                </div>
+              )}
+              {state === "deactivated" && (
+                <div className="p-1 px-3 text-xs text-black bg-red-200 rounded-full">
+                  Deactivated
+                </div>
+              )}
+              {state === "purchased" && (
+                <div className="p-1 px-3 text-xs text-black bg-yellow-200 rounded-full">
+                  Pending
+                </div>
+              )}
+            </div>
           </div>
           <Link href={`/courses/${course.slug}`}>
             <a className="block h-12 mt-1 text-sm font-medium leading-tight text-black sm:text-lg hover:underline">

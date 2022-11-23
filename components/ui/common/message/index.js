@@ -11,7 +11,7 @@ const SIZES = {
   lg: "text-lg",
 };
 
-export default function Message({ children, type = "success" }) {
+export default function Message({ children, type = "success", size }) {
   const [isDisplayed, setIsDisplayed] = useState(true);
 
   if (!isDisplayed) {
