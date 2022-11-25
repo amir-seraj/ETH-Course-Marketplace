@@ -17,7 +17,7 @@ export default function ManagedCourseCard({
   return (
     <div
       className={`${
-        isSearched ? "border-indigo-600" : "bg-gray-200"
+        isSearched ? "border-teal-600" : "bg-gray-200"
       } bg-white border shadow overflow-hidden sm:rounded-lg mb-3`}
     >
       {Object.keys(course).map((key, i) => (
@@ -28,7 +28,7 @@ export default function ManagedCourseCard({
           value={course[key]}
         />
       ))}
-      <div className="bg-white px-4 py-5 sm:px-6">{children}</div>
+      <div className="px-4 py-5 bg-white sm:px-6">{children}</div>
     </div>
   );
 }

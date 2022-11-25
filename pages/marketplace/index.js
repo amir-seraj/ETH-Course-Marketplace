@@ -7,6 +7,7 @@ import { OrderModal } from "@components/ui/order";
 import { useState } from "react";
 import { MarketHeader } from "@components/ui/marketplace";
 import { useWeb3 } from "@components/providers";
+import MultiLingualContent from "@components/providers/web3/hooks/useMulltilingual";
 
 export default function Marketplace({ courses }) {
   const { web3, contract, requireInstall } = useWeb3();
@@ -76,7 +77,7 @@ export default function Marketplace({ courses }) {
                 if (requireInstall) {
                   return (
                     <Button size="sm" disabled={true} variant="lightPurple">
-                      Install
+                      <MultiLingualContent contentID="hello" />
                     </Button>
                   );
                 }

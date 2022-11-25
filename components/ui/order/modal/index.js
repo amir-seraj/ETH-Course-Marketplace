@@ -79,7 +79,7 @@ export default function OrderModal({
           <div className="sm:flex sm:items-start">
             <div className="mt-3 sm:mt-0 sm:ml-4 sm:text-left">
               <h3
-                className="text-lg font-bold leading-6 text-gray-900 mb-7"
+                className="text-lg font-bold leading-6 text-teal-900 mb-7"
                 id="modal-title"
               >
                 {course.title}
@@ -122,7 +122,7 @@ export default function OrderModal({
                   type="text"
                   name="price"
                   id="price"
-                  className="block p-4 mb-1 border-gray-300 rounded-md shadow-md disabled:opacity-50 w-80 focus:ring-indigo-500 focus:border-indigo-500 pl-7 sm:text-sm"
+                  className="block p-4 mb-1 border-gray-300 rounded-md shadow-md disabled:opacity-50 w-80 focus:ring-teal-500 focus:border-teal-500 pl-7 sm:text-sm"
                 />
                 <p className="text-xs text-gray-700">
                   Price will be verified at the time of the order. If the price
@@ -146,7 +146,7 @@ export default function OrderModal({
                       type="email"
                       name="email"
                       id="email"
-                      className="block p-4 border-gray-300 rounded-md shadow-md w-80 focus:ring-indigo-500 focus:border-indigo-500 pl-7 sm:text-sm"
+                      className="block p-4 border-gray-300 rounded-md shadow-md w-80 focus:ring-teal-500 focus:border-teal-500 pl-7 sm:text-sm"
                       placeholder="x@y.com"
                     />
                     <p className="mt-1 text-xs text-gray-700">
@@ -169,7 +169,7 @@ export default function OrderModal({
                       type="email"
                       name="confirmationEmail"
                       id="confirmationEmail"
-                      className="block p-4 border-gray-300 rounded-md shadow-md w-80 focus:ring-indigo-500 focus:border-indigo-500 pl-7 sm:text-sm"
+                      className="block p-4 border-gray-300 rounded-md shadow-md w-80 focus:ring-teal-500 focus:border-teal-500 pl-7 sm:text-sm"
                       placeholder="x@y.com"
                     />
                   </div>

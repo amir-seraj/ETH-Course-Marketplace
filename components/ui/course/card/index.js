@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Card({ course, disabled, Footer, state }) {
   return (
-    <div className="overflow-hidden bg-white shadow-md rounded-xl md:max-w-2xl">
+    <div className="overflow-hidden bg-white border-2 shadow-md border-teal-50 rounded-xl md:max-w-2xl">
       <div className="flex h-full">
         <div className="flex-1 h-full next-image-wrapper">
           <Image
@@ -11,13 +11,13 @@ export default function Card({ course, disabled, Footer, state }) {
             src={course.coverImage}
             layout="responsive"
             width="200"
-            height="230"
+            height="280"
             alt={course.title}
           />
         </div>
         <div className="p-8 pb-4 flex-2">
           <div className="flex items-center">
-            <div className="mr-2 text-sm font-semibold tracking-wide text-indigo-500 uppercase">
+            <div className="mr-2 text-sm font-semibold tracking-wide text-teal-600 uppercase">
               {course.type}
             </div>
             <div>
